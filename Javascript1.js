@@ -1,16 +1,16 @@
 //Hämtar data till console.log
-fetch("http://webbred2.utb.hb.se/~fewe/api/api.php?data=quiz")
+fetch("https://webbred2.utb.hb.se/~fewe/api/api.php?data=quiz")
 .then(res => res.json())
 .then(data => console.log(data))
 
 //Hämtar data till console.log
-fetch("http://webbred2.utb.hb.se/~fewe/api/api.php?data=courses")
+fetch("https://webbred2.utb.hb.se/~fewe/api/api.php?data=courses")
 .then(res => res.json())
 .then(data => console.log(data))
 
 //Courses
 //Hämtar data i json format och skriver ut den i en tabell.
-fetch("http://webbred2.utb.hb.se/~fewe/api/api.php?data=courses", {
+fetch("https://webbred2.utb.hb.se/~fewe/api/api.php?data=courses", {
     method: "GET"
 })
    .then(res => res.json())
@@ -30,7 +30,7 @@ fetch("http://webbred2.utb.hb.se/~fewe/api/api.php?data=courses", {
 
    //Quiz
    //Hämtar data i json format och skriver ut den i i form av en lista med hjälp av div element.
-   fetch("http://webbred2.utb.hb.se/~fewe/api/api.php?data=quiz", {
+   fetch("https://webbred2.utb.hb.se/~fewe/api/api.php?data=quiz", {
     method: "GET"
 })
    .then(res => res.json())
