@@ -17,7 +17,7 @@ form.addEventListener('submit', (event) => {
     }
 
 //Hämtar studen datan genom fetch GET metoden.
-    fetch('http://webbred2.utb.hb.se/~fewe/api/api.php?data=students', {
+    fetch('https://webbred2.utb.hb.se/~fewe/api/api.php?data=students', {
         method: 'GET',
         headers: {
             accept: 'application/json',
