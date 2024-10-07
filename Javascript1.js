@@ -1,20 +1,32 @@
-//Hämtar data till console.log
+// Hämta kursinformation
+fetch("https://webbred2.utb.hb.se/~fewe/api/api.php?data=courses")
+.then(res => res.json())
+.then(data => {
+    data.forEach(course => {
+        const row = `
+        <tr>
+            <td>${course.courseName}</td>
+            <td>${course.credit}</td>
+            <td>${course.startWeek}</td>
+            <td>${course.endWeek}</td>
+            <td>${course.teachers}</td>
+        </tr>`;
+        document.querySelector("#output > tbody").insertAdjacentHTML("beforeend", row);
+    });
+})
+.catch(error => console.error("Error:", error));
+
+// Hämta quiz-data
 fetch("https://webbred2.utb.hb.se/~fewe/api/api.php?data=quiz")
 .then(res => res.json())
 .then(data => {
-    console.log("Quiz data:", data);  // Kontrollera att datan faktiskt hämtas
-
-    //Hämtar data i json format och skriver ut den i i form av en lista med hjälp av div element.
     data.forEach(quiz => {
-        // Skapar en lista av datan för att visa
-        const lista = `<div>
-            <div><strong>Fråga:</strong> ${quiz.question}?</div> 
-            <div><strong>Svar:</strong> ${quiz.correct_answer} <br> 
-            <em>Felaktiga svar:</em> ${quiz.incorrect_answers.join(', ')}</div><br>
+        const question = `
+        <div>
+            <div>Fråga: ${quiz.question}</div>
+            <div>Svar: ${quiz.correct_answer}, ${quiz.incorrect_answers.join(", ")}</div>
         </div>`;
-
-        // Anger position om hur texten i listan ska visas, alltså varje stycke efter varandra.
-        document.querySelector("#output2").insertAdjacentHTML("beforeend", lista);
+        document.querySelector("#output2").insertAdjacentHTML("beforeend", question);
     });
 })
-.catch(error => console.log("Error fetching quiz data:", error));
+.catch(error => console.error("Error:", error));
